@@ -1,17 +1,16 @@
-//saved articles pane
-//displays information on button click
+//shows results of query
 var React = require("react");
 
-var Saved = React.createClass({
+var Results = React.createClass({
     render: function(){
         return(
             <div className="row">
                 <div className="panel panel-default text-center">
                     <div className="panel-heading">
-                        <div className="panel-title"></div>                        
+                        <div className="panel-title">Results</div>                        
                     </div>
                     <div className="panel-body">
-                        {/*show all saved articles from database with date*/}
+                        {/*populate results w/ save button*/}
                     </div>
                 </div>
             </div>
@@ -19,4 +18,4 @@ var Saved = React.createClass({
     }
 });
 
-module.exports = Saved;
+module.exports = Results;
