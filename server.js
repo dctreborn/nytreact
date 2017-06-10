@@ -37,8 +37,46 @@ db.once("open", function() {
 
 //MongoDB routes
 // -------------------------------------------------
+//get main route
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
+//get all saved articles
+app.get("/api", function(req, res){
+  Article.find({}).sort(["date", -1]).exec(function(err, doc){
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
 
+//send saved articles to db
+app.post("/api", function(req, res){
+  Article.create({
+    title: req.body.title,
+    url: req.body.url
+  }, function(err){
+    if (err) {
+      console.log(err);
+    } else {
+      res.send("Saved article");
+    }
+  });
+});
+
+//delete saved article
+app.get("/api/:id", function(req, res){
+  Article.remove({_id: req.params.id}, function(err, doc){
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(doc);
+    }
+  });
+});
 
 // -------------------------------------------------
 
