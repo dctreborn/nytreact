@@ -10,9 +10,11 @@ var query = {
         queryURL += "&end_date=" + endYear;
 
         return axious.get(queryURL).then(function(resp){
+            console.log(resp);
             // if success
-            if (response.data.results[0]) {
-                return response.data.results[0].formatted; //fix to nyt format
+            if (response.status == "OK") {
+                //response.docs[x].headline.main/.byline.original/.section_name/.pub_date/.web_url
+                return response.docs;
             }
 
             //return empty string if no results
