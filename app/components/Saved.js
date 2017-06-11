@@ -8,7 +8,7 @@ var Saved = React.createClass({
             <div className="row">
                 <div className="panel panel-default text-center">
                     <div className="panel-heading">
-                        <div className="panel-title"></div>                        
+                        <div className="panel-title">Saved Articles</div>                        
                     </div>
                     <div className="panel-body">
                         {/*show all saved articles from database with date*/}
