@@ -1,26 +1,22 @@
-var React = require("react");
-var router = require("react-router");
+import React from "react";
+import { Route, IndexRoute, Router, browserHistory } from "react-router";
 
-var Route = router.Route;
-var Router = router.Router;
+import Main from "../components/Main";
+import Saved from "../components/Saved";
+import Search from "../components/Search";
+import Results from "../components/Results";
 
-var hashHistory = router.hashHistory;
-
-var IndexRoute = route.IndexRoute;
-
-var Main = require("../components/Main");
-var Saved = require("../components/Saved");
-var Search = require("../components/Search");
-var Results = require("../components/Results");
-
-module.exports = (
-    <Router history={hashHistory}>
+const routes = (
+    <Router history={browserHistory}>
         <Route path="/" component={Main}>
-            <Route path="search" component={Search}/>
+            
+            {/*<Route path="search" component={Search}/>
             <Route path="saved" component={Saved}/>
             <Route path="results" component={Results}/>
             
-            <IndexRoute component={Search}/>
+            <IndexRoute component={Search}/>*/}
         </Route>
     </Router>
 );
+
+export default routes;

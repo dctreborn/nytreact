@@ -21,8 +21,10 @@ var Main = React.createClass({
                     <Link to="/results"><button className="btn btn-default">Results</button></Link>                    
                     <Link to="/saved"><button className="btn btn-default">Saved Articles</button></Link>
                 </div>
-                {this.props.children}
+                {/*{this.props.children}*/}
             </div>
          );
     }
 });
+
+module.exports = Main;
