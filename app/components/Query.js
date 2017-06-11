@@ -4,18 +4,21 @@ var nytAPI = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
 
 var query = {
     runQuery: function(term) {
-        var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey;
+        var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + nytAPI;
         queryURL += "&q=" + term;
         //stretch goal
         // queryURL += "&begin_date=" + startYear;
         // queryURL += "&end_date=" + endYear;
+        console.log("Query start");
 
-        return axious.get(queryURL).then(function(resp){
-            console.log(resp);
+        return axios.get(queryURL).then(function(resp){
+            // console.log("api response")
+            // console.log(resp);
             // if success
-            if (response.status == "OK") {
-                //response.docs[x].headline.main/.byline.original/.section_name/.pub_date/.web_url
-                return response.docs;
+            if (resp.status == 200) {
+                //resp.docs[x].headline.main/.byline.original/.section_name/.pub_date/.web_url
+                console.log("API return");
+                return resp.data.response.docs;
             }
 
             //return empty string if no results
