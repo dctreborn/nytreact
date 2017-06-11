@@ -1,6 +1,7 @@
 //need NYT API for query
 var axios = require("axios");
-var nytAPI = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+// e21bda65b10e4a6289991be04bc3917e
+var nytAPI = "e21bda65b10e4a6289991be04bc3917e";
 
 var query = {
     runQuery: function(term) {
