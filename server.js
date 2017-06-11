@@ -39,11 +39,13 @@ db.once("open", function() {
 // -------------------------------------------------
 //get main route
 app.get("/", function(req, res) {
+  console.log("main page");
   res.sendFile(__dirname + "/public/index.html");
 });
 
 //get all saved articles
 app.get("/api", function(req, res){
+  console.log("get all saved articles");
   Article.find({}).sort(["date", -1]).exec(function(err, doc){
     if (err) {
       console.log(err);
@@ -55,6 +57,7 @@ app.get("/api", function(req, res){
 
 //send saved articles to db
 app.post("/api", function(req, res){
+  console.log("saving article");
   Article.create({
     title: req.body.title,
     url: req.body.url
@@ -69,6 +72,7 @@ app.post("/api", function(req, res){
 
 //delete saved article
 app.get("/api/:id", function(req, res){
+  console.log("delete article");
   Article.remove({_id: req.params.id}, function(err, doc){
     if (err) {
       console.log(err)
