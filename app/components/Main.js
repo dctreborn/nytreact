@@ -6,22 +6,56 @@
 
 var React = require("react");
 var Link = require("react-router").Link;
+var Search = require("./Search");
+var Results = require("./Results");
+var Saved = require("./Saved");
+var query = require("./Query");
 
 //main
 var Main = React.createClass({
-    // add form states
-    
+    getInitialState: function(){
+        return {
+            searchTerm: "",
+            result: "",            
+        }
+    },
+
+    componentDidUpdate: function(){
+        query.runQuery(this.state.searchTerm).then(function(data){
+            console.log(data);
+
+            let results = [];
+            data.forEach(function(element) {
+                console.log(element);
+
+                let obj = {};
+                obj.title = element.headline.main;
+                obj.url = element.web_url;
+                obj.date = element.pub_date;
+                results.push(obj);
+            });
+            this.setState({result: results});
+        }.bind(this));
+    },
+
+    setSearch: function(searchTerm){
+        this.setState({
+            searchTerm: searchTerm 
+        });
+    },
+
+    // add form states    
     render: function() {
         return (
             <div className="container">
                 <div className="jumbotron text-center">
                     <h1>New York Times Article Scrubber</h1>
-                    <p>Search for and annotate articles of interest!</p>
-                    <Link to="/search"><button className="btn btn-default">Search</button></Link>
-                    <Link to="/results"><button className="btn btn-default">Results</button></Link>                    
+                    <p>Search for and annotate articles of interest!</p>                    
                     <Link to="/saved"><button className="btn btn-default">Saved Articles</button></Link>
                 </div>
-                {/*{this.props.children}*/}
+                <Search searchTerm={this.setSearch}/>
+                <Results results={this.state.results}/>
+                <Saved />
             </div>
          );
     }
