@@ -14,7 +14,7 @@ var Search = React.createClass({
         });
     },
 
-    handleSubmit: function(){
+    handleSubmit: function(event){
         event.preventDefault();
 
         // Set the parent to have the search term
@@ -34,7 +34,7 @@ var Search = React.createClass({
                         {/*start year*/}
                         {/*end year*/}
 
-                        <form role="form">
+                        <form role="form" onSubmit={this.handleSubmit}>
                         
                             <div className="form-group">
                                 <label>Search Term:</label>

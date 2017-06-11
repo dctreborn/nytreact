@@ -21,19 +21,19 @@ var Main = React.createClass({
     },
 
     componentDidUpdate: function(){
+        console.log("component did update");
         query.runQuery(this.state.searchTerm).then(function(data){
-            console.log(data);
 
             let results = [];
             data.forEach(function(element) {
-                console.log(element);
-
                 let obj = {};
                 obj.title = element.headline.main;
                 obj.url = element.web_url;
                 obj.date = element.pub_date;
                 results.push(obj);
             });
+            console.log("result array");
+            console.log(results);
             this.setState({result: results});
         }.bind(this));
     },
@@ -53,7 +53,7 @@ var Main = React.createClass({
                     <p>Search for and annotate articles of interest!</p>                    
                     <Link to="/saved"><button className="btn btn-default">Saved Articles</button></Link>
                 </div>
-                <Search searchTerm={this.setSearch}/>
+                <Search setSearch={this.setSearch}/>
                 <Results results={this.state.results}/>
                 <Saved />
             </div>

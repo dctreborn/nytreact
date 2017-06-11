@@ -10,7 +10,7 @@ var Results = React.createClass({
                         <div className="panel-title">Results</div>                        
                     </div>
                     <div className="panel-body">
-                        {/*populate results w/ save button*/}
+                        {this.props.results}
                     </div>
                 </div>
             </div>
